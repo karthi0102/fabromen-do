@@ -1,0 +1,4 @@
+{
+    "MONGO_URL":"mongodb+srv://fabromen:fabromen@test.8ketb.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "jwtToken":"fabromentoken"
+}
