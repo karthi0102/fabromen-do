@@ -14,8 +14,6 @@ router.get("/",auth,async(req,res)=>{
         console.log(err)
         res.status(500).send('Server Error')
     }
-
-
 }) 
 
 router.post("/",[
@@ -31,14 +29,12 @@ router.post("/",[
         let user = await User.findOne({email})
         if(!user) {
             return res.status(400).json({errors:[{msg:"Invalid Credentials"}]});
-
         }
         
     
         const isMatch = await bcrypt.compare(password,user.password)
         if(!isMatch) {
             return res.status(400).json({errors:[{msg:"Invalid Credentials"}]});
-
         }
         
         const payload ={
@@ -48,7 +44,7 @@ router.post("/",[
         }
         jwt.sign(payload,
             config.get("jwtToken"),
-            {expiresIn:3600},
+            {expiresIn:172800},
             (err,token) => {
                 if(err) throw err;
                 res.json({token})
